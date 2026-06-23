@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Renesia — Catatan Putri tentang Kesehatan Perempuan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F4EE;
+      --warm-white: #FDFBF8;
+      --moss: #4A5240;
+      --sage: #8A9E80;
+      --blush: #C9A89A;
+      --ink: #2A2A2A;
+      --muted: #888880;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      border-bottom: 1px solid #E8E4DC;
+      background: var(--warm-white);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--moss);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--moss); }
+
+    /* HERO */
+    .hero {
+      padding: 80px 48px 60px;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--moss);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blush);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--blush);
+      margin: 0 auto;
+    }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--cream);
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      max-width: 900px;
+      margin: 60px auto;
+      border-radius: 2px;
+    }
+
+    .about-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: white;
+      font-weight: 400;
+    }
+
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--moss);
+      margin-bottom: 10px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* POSTS */
+    .posts-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 36px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E8E4DC;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .post-card {
+      padding: 32px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.2s;
+    }
+
+    .post-card:hover { transform: translateY(-3px); }
+
+    .post-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 12px;
+    }
+
+    .post-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--moss);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .post-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .post-meta {
+      font-size: 12px;
+      color: #BBBBBB;
+      letter-spacing: 0.04em;
+    }
+
+    /* COMING SOON BANNER */
+    .coming-soon {
+      background: var(--moss);
+      color: white;
+      text-align: center;
+      padding: 48px;
+      max-width: 900px;
+      margin: 0 auto 80px;
+      border-radius: 2px;
+    }
+
+    .coming-soon h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .coming-soon p {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+
+    .coming-soon input {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      width: 260px;
+      margin-right: 8px;
+      outline: none;
+    }
+
+    .coming-soon button {
+      padding: 12px 24px;
+      background: var(--blush);
+      border: none;
+      border-radius: 2px;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #E8E4DC;
+      padding: 32px 48px;
+      text-align: center;
+      font-size: 13px;
+      color: #CCCCCC;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 20px 24px; }
+      .hero { padding: 60px 24px 40px; }
+      .about-strip { flex-direction: column; padding: 36px 24px; text-align: center; }
+      .posts-section { padding: 0 24px; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .coming-soon { padding: 36px 24px; }
+      .coming-soon input { width: 100%; margin-right: 0; margin-bottom: 10px; }
+      .coming-soon button { width: 100%; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Renesia</a>
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#artikel">Artikel</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Catatan perempuan tentang tubuh &amp; diri sendiri</p>
+    <h1>Perjalanan menuju <em>versi terbaik</em> dari dirimu</h1>
+    <p>Halo, saya Putri. Di sini saya berbagi tentang kesehatan perempuan, bahan-bahan alami, dan hal-hal kecil yang membuat tubuh kita merasa lebih hidup.</p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-strip" id="tentang">
+    <div class="about-avatar">P</div>
+    <div class="about-text">
+      <h2>Halo, saya Putri</h2>
+      <p>Saya perempuan Indonesia yang sudah lama tertarik dengan kesehatan alami — bukan karena tren, tapi karena saya sendiri pernah merasakan betapa sulitnya memahami tubuh sendiri. Blog ini lahir dari catatan-catatan pribadi saya. Semoga ada yang berguna untuk kamu juga.</p>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section class="posts-section" id="artikel">
+    <p class="section-label">Tulisan terbaru</p>
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <p class="post-tag">Rambut &amp; Hormon</p>
+        <h3>Kenapa rambut kita rontok dan apa yang sebenarnya bisa dilakukan</h3>
+        <p>Selama bertahun-tahun saya mengira rambut rontok hanya soal sampo yang salah. Ternyata jawabannya jauh lebih dalam dari itu.</p>
+        <p class="post-meta">Maret 2025 &nbsp;·&nbsp; 6 menit baca</p>
+      </div>
+
+      <div class="post-card">
+        <p class="post-tag">Bahan Alami</p>
+        <h3>Minyak biji labu — bahan yang sering diabaikan tapi luar biasa</h3>
+        <p>Saya mulai mencarinya setelah dokter saya menyebutnya sekilas. Yang saya temukan membuat saya tidak bisa berhenti membaca.</p>
+        <p class="post-meta">Januari 2025 &nbsp;·&nbsp; 5 menit baca</p>
+      </div>
+
+      <div class="post-card">
+        <p class="post-tag">Gaya Hidup</p>
+        <h3>Tidur, stres, dan rambut — hubungan yang tidak pernah diajarkan di sekolah</h3>
+        <p>Ternyata kualitas tidur saya selama ini adalah salah satu alasan terbesar kenapa rambut saya terus menipis.</p>
+        <p class="post-meta">November 2024 &nbsp;·&nbsp; 4 menit baca</p>
+      </div>
+
+      <div class="post-card">
+        <p class="post-tag">Suplemen</p>
+        <h3>Apa yang saya pelajari setelah 6 bulan mencoba berbagai suplemen</h3>
+        <p>Bukan review berbayar. Hanya catatan jujur dari perempuan yang sudah terlalu sering kecewa dengan produk yang tidak bekerja.</p>
+        <p class="post-meta">September 2024 &nbsp;·&nbsp; 7 menit baca</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="coming-soon">
+    <h3>Tulisan baru sedang dalam perjalanan</h3>
+    <p>Tinggalkan emailmu dan saya akan kabari kalau ada artikel baru.</p>
+    <div>
+      <input type="email" placeholder="emailmu@gmail.com" />
+      <button>Kabari saya</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Renesia &nbsp;·&nbsp; Ditulis dengan jujur oleh Putri
+  </footer>
+
+</body>
+</html>
